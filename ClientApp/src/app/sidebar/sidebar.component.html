@@ -1,0 +1,18 @@
+<div id="sidebar" class="container-fluid no-text-decoration">
+    <span class="display-name">Nicholas Vilela</span>
+
+    <div id="channels">
+        <label for="channel-lists">CHANNELS</label>
+        <span>Create channel</span>
+        <li id="channel-list" *ngFor="let channel of channels[0]">
+            <a [ngClass]="{'active' : channel == currentChannel[0]}" class="channel" (click)="changeChannel(channel)"># {{channel}}</a>
+        </li>
+    </div>
+
+    <div id="direct-messages">
+        <label for="messages-list">DIRECT MESSAGES</label>
+        <li id="messages-list">
+
+        </li>
+    </div> 
+</div>

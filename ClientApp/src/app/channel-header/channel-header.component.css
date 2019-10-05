@@ -1,0 +1,8 @@
+.channel-header {
+    display: block;
+    position: absolute;
+    right: 0;
+    border-bottom: 1px solid white;
+    width: 100%;
+    height: 8%;
+}

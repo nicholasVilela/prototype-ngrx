@@ -1,0 +1,33 @@
+#sidebar {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 15%;
+    background-color: #1E1F26;
+    color: #D0E1F9;
+    left: 0;
+    border-right: 1px solid #D0E1F9; 
+    padding-right: 15px;
+    padding-left: 15px;
+} 
+
+.no-text-decoration {
+    list-style-type: none;
+}
+
+.channel:hover {
+    padding-left: 0;
+    padding-right: 0;
+    background-color: #283655;
+    width: 100%;
+    cursor: pointer;
+}
+.active {
+    background-color: #4d648d;
+}
+.active:hover {
+    background-color: #4d648d;
+}
+.channel {
+    display: block;
+}
