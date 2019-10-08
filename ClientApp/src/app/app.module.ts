@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router'
 import { HttpClientModule } from '@angular/common/http';
 
 import {StoreModule} from '@ngrx/store'
-import {channelReducer} from './Reducers/app.reducers';
+import {channelReducer, messagesReducer} from './Reducers/app.reducers';
 import {userReducer} from './Reducers/app.reducers';
 import { MainComponent } from './main/main.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -21,7 +21,8 @@ import { firebaseConfig } from '../app/firebase.config'
 
 import { FormsModule } from '@angular/forms';
 import { ChannelHeaderComponent } from './channel-header/channel-header.component';
-import { AppService } from './app.service';
+import { SignalRService } from './signalR/signalRService';
+import { FirebaseService } from './Firebase/firebaseService';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AppService } from './app.service';
     FormsModule,
     StoreModule.forRoot({
       stateStore: channelReducer,
+      messagesStore: messagesReducer,
       userStore: userReducer
     }),
     RouterModule.forRoot([
@@ -51,7 +53,7 @@ import { AppService } from './app.service';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [AppService],
+  providers: [SignalRService, FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

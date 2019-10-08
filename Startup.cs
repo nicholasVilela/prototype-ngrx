@@ -48,7 +48,9 @@ namespace prototype_ngrx
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseDefaultFiles();
             app.UseSpaStaticFiles();
+            app.UseCors("CorsPolicy");
 
             app.UseSignalR(routes => {
                 routes.MapHub<ChatHub>("/chat");

@@ -11,6 +11,19 @@ export class ChangeChannel implements Action {
     constructor(public payload: string){}
 }
 
+export class ChangeMessages implements Action {
+    type = 'CHANGE_MESSAGES'
+
+    constructor(public payload: Object){}
+}
+
+export const messagesAction = (data) => {
+    return {
+        type: 'CHANGE_MESSAGES',
+        payload: data
+    }
+}
+
 export class SetUser implements Action {
     type = 'SET'
 

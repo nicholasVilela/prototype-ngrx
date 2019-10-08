@@ -8,9 +8,9 @@ namespace SignalRChat.Hubs
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
 
-        public async Task JoinChannel(string groupName, string user, string message) {
+        public async Task JoinChannel(string groupName) {
             await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
-            await Clients.Group(groupName).SendAsync("ReceiveMessage", user, message);
+            await Clients.Group(groupName).SendAsync("ReceiveMessage", $"{Context.ConnectionId} has joined the group {groupName}");
         }
 
         public async Task SendSelfMessage(string user, string message) {

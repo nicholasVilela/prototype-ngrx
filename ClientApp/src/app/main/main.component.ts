@@ -1,21 +1,28 @@
-import { Component, OnInit } from '@angular/core'
-import {Store} from '@ngrx/store'
-import {State} from '../Models/app.model'
+import { Component, OnInit, Output, EventEmitter, Inject, Injectable } from '@angular/core'
+import * as firebase from 'firebase'
+import * as signalR from '@microsoft/signalr'
+import {firebaseConfig} from '../firebase.config.js'
 import {AppState} from '../app.state'
-import {Observable} from 'rxjs'
+import {State} from '../Models/app.model'
+import {User} from '../Models/app.model'
+import {Store, select} from '@ngrx/store'
+import {Observable, Subscription, Subject} from 'rxjs'
+import { ChatComponent } from '../chat/chat.component.js'
+import {SignalRService} from '../signalR/signalRService'
+import { FirebaseService } from '../Firebase/firebaseService.js'
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css'],
+  providers: [SignalRService, FirebaseService]
 })
-export class MainComponent implements OnInit {
-  state: Observable<State[]>
-  constructor(private store: Store<AppState>) {
-    this.state = store.select('stateStore')
-  }
+@Injectable() 
+export class MainComponent implements OnInit{
+  constructor(private signalR: SignalRService, public firebaseService: FirebaseService) {}
 
   ngOnInit() {
+    this.signalR.startConnection()
+    this.signalR.addMessageListener()
   }
-
 }

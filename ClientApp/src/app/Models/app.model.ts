@@ -7,3 +7,7 @@ export interface State {
     currentChannel: string
     channels: string[]
 }
+
+export interface Messages {
+    messages:any
+}
